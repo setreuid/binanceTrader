@@ -1,0 +1,54 @@
+﻿<Window x:Class="binanceTrader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:binanceTrader"
+        mc:Ignorable="d"
+        Title="COIN TRADER" Height="337.088" Width="345.23" Background="Black" Loaded="Window_Loaded" WindowStyle="ToolWindow" ResizeMode="NoResize" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Canvas x:Name="cvMain" Margin="8" Opacity="0.295" >
+        <Label Content="시가" Canvas.Left="0.351" Canvas.Top="21.734" Foreground="White" Width="51.546"/>
+        <Label Content="종목" Canvas.Left="0.351" Canvas.Top="-0.014" Foreground="White" Width="51.546"/>
+        <Label x:Name="lbClosing" Content="0" Canvas.Left="51.924" Canvas.Top="21.734" Foreground="#FFFF6666" Width="111.494" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbCoin" Content="0" Canvas.Left="51.924" Canvas.Top="-0.014" Foreground="#FF02D475" Width="111.494" HorizontalContentAlignment="Right"/>
+        <Label Content="USDT" Canvas.Left="0.351" Canvas.Top="56.822" Foreground="White" Width="51.546"/>
+        <Label Content="BTC" Canvas.Left="0.351" Canvas.Top="80.557" Foreground="White" Width="51.546"/>
+        <Label x:Name="lbTKrw" Content="0" Canvas.Left="38.535" Canvas.Top="56.822" Foreground="White" Width="124.883" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbTBtc" Content="0" Canvas.Left="38.535" Canvas.Top="80.557" Foreground="White" Width="124.883" HorizontalContentAlignment="Right"/>
+        <Label Content="매수" Canvas.Left="0.351" Canvas.Top="114.612" Foreground="White" Width="51.546"/>
+        <Label Content="단가" Canvas.Left="0.351" Canvas.Top="138.347" Foreground="White" Width="51.546"/>
+        <Label x:Name="lbBidCoin" Content="0" Canvas.Left="38.535" Canvas.Top="114.612" Foreground="White" Width="124.883" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbBidKrw" Content="0" Canvas.Left="38.535" Canvas.Top="138.347" Foreground="Cyan" Width="124.883" HorizontalContentAlignment="Right"/>
+        <Label Content="수익" Canvas.Left="0.351" Canvas.Top="162.058" Foreground="White" Width="51.546"/>
+        <Label x:Name="lbEarn" Content="0" Canvas.Left="38.535" Canvas.Top="162.058" Foreground="#FFFF6666" Width="124.883" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbPercent" Content="0" Canvas.Left="38.535" Canvas.Top="185.276" Foreground="#FFFF6666" Width="124.883" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+        <Label x:Name="lbMessage" Content="#" Canvas.Left="0.351" Canvas.Top="254.378" Foreground="White" Width="312.879"/>
+        <Image x:Name="imgUpdn" Height="17.104" Width="18.362" Canvas.Left="38.535" Canvas.Top="25.946"/>
+        <Label Content="누적" Canvas.Left="0.351" Canvas.Top="218.302" Foreground="White" Width="51.546"/>
+        <Label x:Name="lbSum" Content="0" Canvas.Left="38.535" Canvas.Top="218.302" Foreground="#FFFF6666" Width="124.883" HorizontalContentAlignment="Right"/>
+        <DataGrid x:Name="dgBull" Height="249.378" Canvas.Left="178.469" Width="134.761" Background="Black" BorderBrush="#FF303030" HeadersVisibility="None" Foreground="Black">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Black"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=status}" Value="dn">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=status}" Value="up">
+                            <Setter Property="Foreground" Value="Green"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=status}" Value="">
+                            <Setter Property="Foreground" Value="Gray"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Canvas>
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control"
+                    Key="A"
+                    Command="{Binding HotkeyCtrl1}" />
+    </Window.InputBindings>
+</Window>
